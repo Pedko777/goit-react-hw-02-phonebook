@@ -22,14 +22,16 @@ class App extends Component {
       name: name,
       number: number,
     };
-    this.state.contacts.find(({ name }) => name === contact.name)
-      ? alert(`${contact.name} already exists`)
-      : this.setState(prevState => {
-          return {
-            contacts: [...prevState.contacts, contact],
-          };
-        });
-  };
+    
+      this.state.contacts.find(({ name }) => name === contact.name && contact.name)
+        ? alert(`${contact.name} already exists`)
+        : this.setState(prevState => {
+            return {
+              contacts: [...prevState.contacts, contact],
+            };
+          });
+    };
+
 
   deleteContact = id => {
     this.setState(prevState => {

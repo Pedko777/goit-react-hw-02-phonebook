@@ -7,17 +7,13 @@ class ConatctForm extends Component {
     number: '',
   };
 
-  handleChange = e => {
-    const { name, value } = e.target;
+  handleChange = ({target:{name, value}}) =>this.setState({[name]: value });
 
-    this.setState({[name]: value });
-  };
 
   handleSubmit = e => {
     e.preventDefault();
     const { name, number } = this.state;
-
-    this.props.onSubmit(name, number);
+    name !== "" && number!=="" && this.props.onSubmit(name, number);
     this.setState({
       name: '',
       number: '',
